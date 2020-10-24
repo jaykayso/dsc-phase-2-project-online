@@ -47,7 +47,7 @@ The most common number of bedrooms is 3 or 4.
 Out of the 3 bedroom properties, the most common number of bathrooms is 1, 1.75, and 2.5.
 Out of the 4 bedroom properties, the most common number of bathrooms is 2.5.
     
-    The area with the most sales was the zip code of 98199.
+The area with the most sales was the zip code of 98199.
 
 ### Conclusion
 
