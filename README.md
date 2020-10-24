@@ -13,69 +13,63 @@ Long term investment of building commercial strip centers and renting them out.
 
 ### The Data
 
-The data provided for this project was the King County Dataset. Additionally I pulled average income by zipcode from https://www.incomebyzipcode.com
+The data used was from the King County House Sales dataset. Additionally I pulled average income by zipcode from https://www.incomebyzipcode.com.
 
 
-### Exploratory Questions
+### Question One
 
-[Question One Notebook Link](https://github.com/jaykayso/dsc-phase-1-project-online/blob/master/Question%201.ipynb)
+[Question One Notebook Link](https://github.com/jaykayso/dsc-phase-2-project-online/blob/master/Notebooks/Module%202%20Question%20One%20Final%20Draft.ipynb)
 <details><summary style="font-size: 24px">
-Question 1: Which genres or themes get the highest ratings?
+Question 1: What features are contributing most aggressively to the sale price?
+    
+I got an r-sqared value of .928 in my OLS model by using feature engineering. I engineered features for latitudinal distance to North Mercer Island, and income by zipcode. Narrowing down the features by high pvalue and low coefficient values allowed me to determine the 3 most influential features for predicting the sale price. 
+    
+    The 3 most influential features were: 
+        - sqft_living: The indoor square footage.
+        - lat_dist: The latitudinal distance from N. Mercer Island. 
+        - income: Average income by zipcode.
+    
+### Conclusion
 
-Data Used: 
-    - imdb.title.ratings.csv
-    - imdb.title.basics.csv
-    
-In order to properly calculate the rating average of each genre, I had to split the clusters of the genres so that each cell had one genre with one rating. Then, I was able to calculate the mean with the genres grouped. In conclusion, since Adult and Horror movies average the lowest in terms of rating, I would advise Microsoft agaist creating those movies. 
-    
-[Question Two Notebook Link](https://github.com/jaykayso/dsc-phase-1-project-online/blob/master/Question%202%20.ipynb)
+In conclusion, large property sizes are indicative of higher sale prices, so given a lot to build on, our stakeholders may to make a larger indoor area and smaller lot. Since income is a factor in sale price, budgets for building projects should be configured so that asking prices are relative to income prices in the area. Additionally further analysis could be implemented to standardise the features and determine how the features compare to each other when determining sale price. 
+
+### Question Two
+
+[Question Two Notebook Link](https://github.com/jaykayso/dsc-phase-2-project-online/blob/master/Notebooks/Module%202%20Question%20Two%20Final%20Draft.ipynb)
 <details><summary style="font-size: 24px">
-Question 2: Does release date impact profit?
+Question 2: What property types are most common?
 
-Data Used: 
-    - tn.movie_budgets.csv
+To further understand the properties that have prices affected by the aforementioned features, I looked into the most common sale prices, most common property types, and the area where the most properties sold. 
+    
+    The most common sale price is around $350,000. The data forms a normal distribution that skews right. 
+    
+    The most common number of bedrooms is 3 or 4.
+    Out of the 3 bedroom properties, the most common number of bathrooms is 1, 1.75, and 2.5.
+    Out of the 4 bedroom properties, the most common number of bathrooms is 2.5.
+    
+    The area with the most sales was the zip code of 98199.
+
+### Conclusion
+
+In conclusion, understanding the types of properties that are most common can help in determining the demand in the market. However, this does not determine true demand in the market and futher analysis could be used to determine competition, properties currently for sale, properties that sell the most quickly, or other factors that indicate the supply and demand of the market. This information could then be leveraged to determine properties that could be sold quickly, which would be preferred for a developer.  
+
+### Question Three
+    
+[Question Three Notebook Link](https://github.com/jaykayso/dsc-phase-2-project-online/blob/master/Notebooks/Module%202%20Question%20Three%20Final%20Draft.ipynb)
+<details><summary style="font-size: 24px">
+Question 3: What percentage of properties have all of the aforementioned attributes?
+
+By splicing the data, I determined that all of the properties in the zipcode of 98199 with 3 or 4 bedrooms sold for over $350,000(the most common price). None of the properties had all of the most common attributes.
+    
+### Conclusion
+    
+In conclusion, these findings determine that the demand is not obvious. It shows that the property types are not homogenous and vary greatly. Further research based on the unique goals of the developers could be used to analyse the profit potential in the market. 
+
+    
+# Wrap Up and Future Work
+    
+Our developers should consider building properties with small outdoor areas to maximize the indoor square footage. Additionally the asking price should be relative to the average zipcode in the area. Since there is variation in the properties, further analysis would be useful in analyzing the market to better understand supply and demang. Those findings could be used in association with the goals of the developers to find opportunities with the best profit potential. 
  
-I calculated profit by subtracting production budget from the worldwide gross revenue. Then, I calculated profit margin by dividing the profit by the production budget. I grouped this profit margin in terms of weeks of the year and also days of the week to determine if a particular time of release day was more profitable. I quickly found out that sorting by day was mute since the vast majority of movies are released on Friday. Additionally, the highest weeks of movie releases were at the end of the year. The conclusion I drew here was that the movie industry is aware that demand for movies peaks at the end of the week and year. For Microsoft to be successful in the movie space, I would encourage them to take advantage of the peak demand times as well. 
-    
-[Question Three Notebook Link](https://github.com/jaykayso/dsc-phase-1-project-online/blob/master/Question%203.ipynb)
-<details><summary style="font-size: 24px">
-Question 3: Can we find writers that show a track record of writing well-rated movies?
-
-Data Used: 
-    - imdb.title.principals.csv
-    - imdb.title.crew.csv
-    - imdb.name.basics.csv
-    - imdb.title.ratings.csv
-    - imdb.title.basics.csv
-    - imdb.title.akas.csv
-    
-Within the data, the tconst values represent the unique movie titles while the nconst values represent the unique crew names. I separated the clusteers of nconst values and set each to a unique tconst value. I restricted the data to only feature writers. Afterwards, I was able to join that dataframe with movie ratings and create a column that included the count of movies that a particular crew member (nconst) had done. I further restricted the dataframe to only include writers who had written over 5 movies. This made it possible to group by the nconst values (unique crew members) and determine what the average was for each individual writer. I attached the crew names to the short list of qualified writers. In conclusion, I would recommend that Microsoft Studios hire a writer with a track record of successful, highly rated, movies.
-    
-[Question Four Notebook Link](https://github.com/jaykayso/dsc-phase-1-project-online/blob/master/Question%204.ipynb)
-<details><summary style="font-size: 24px">
-Question 4: Can we find directors with a track record of directing well-rated movies?
-
-    
- Data Used: 
-    - imdb.title.principals.csv
-    - imdb.title.crew.csv
-    - imdb.name.basics.csv
-    - imdb.title.ratings.csv
-    - imdb.title.basics.csv
-    - imdb.title.akas.csv
-    
-    
-Within the data, the tconst values represent the unique movie titles while the nconst values represent the unique crew names. I separated the clusteers of nconst values and set each to a unique tconst value. I restricted the data to only feature writers. Afterwards, I was able to join that dataframe with movie ratings and create a column that included the count of movies that a particular crew member (nconst) had done. I further restricted the dataframe to only include directors who had directed over 5 movies. This made it possible to group by the nconst values (unique crew members) and determine what the average was for each individual director. I attached the crew names to the short list of qualified directors. In conclusion, I would recommend that Microsoft Studios hire a director with a track record of successful, highly rated, movies.  
-    
-    
-# Wrap Up
-    
-Microsoft should release a movie on a Friday at the end of the year with a skilled director and writer, and they should avoid the genres of horror and adult. 
-    
-    
-# Future Work
-    
-I recommend that we further investigate the connection to qualified crew members and movie success. Additionally, it would be interesting to look at a dataset on movie sales and demand on movies year round. 
     
     
     
